@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp
+namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
@@ -55,6 +55,14 @@ namespace WindowsFormsApp
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtUsername_MouseEnter(object sender, EventArgs e)
+        {
+            if(txtUsername.Text == "username")
+            {
+                txtUsername.Clear();
+            }
         }
     }
 }
