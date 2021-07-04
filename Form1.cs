@@ -28,33 +28,6 @@ namespace MS_SQL_Management_System
 
         }
 
-        private void txtPassword_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_MouseClick_1(object sender, MouseEventArgs e)
-        {
-            if(txtUsername.Text == "Username")
-            {
-                txtUsername.Clear();
-            }
-        }
-
-        private void txtPassword_MouseClick(object sender, MouseEventArgs e)
-        {
-            if(txtPassword.Text == "Password")
-            {
-                txtPassword.Clear();
-                txtPassword.PasswordChar = '*';
-            }
-        }
-
         private void pictureBoxInstagram_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.instagram.com/ssc_spc/"); 
@@ -73,7 +46,7 @@ namespace MS_SQL_Management_System
         private void btnLogin_Click(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "data source = LAPTOP-48SAL22A\\SQLEXPRESS ; database = master; Integrated security = True;";
+            connection.ConnectionString = "data source = LAPTOP-48SAL22A\\SQLEXPRESS ; database = ManagementDatabase; Integrated security = True;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = "select * from loginTable where username = '" + txtUsername.Text + "' and pass ='"+txtPassword.Text+"'";
@@ -87,6 +60,9 @@ namespace MS_SQL_Management_System
             //If there is data in the database
             if(ds.Tables[0].Rows.Count != 0)
             {
+                this.Hide();
+                Dashboard dashboard = new Dashboard();
+                dashboard.Show();
 
             }
             else
@@ -94,6 +70,39 @@ namespace MS_SQL_Management_System
                 MessageBox.Show("Wrong Username OR Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
+        }
+
+        private void txtUsername_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_Click(object sender, EventArgs e)
+        {
+            txtUsername.Clear();
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "Password")
+            {
+                txtPassword.Clear();        
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = '*';
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
