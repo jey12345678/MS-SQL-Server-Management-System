@@ -101,7 +101,12 @@ namespace MS_SQL_Management_System
             txtPassword.PasswordChar = '*';
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void rectangleShape2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
         }

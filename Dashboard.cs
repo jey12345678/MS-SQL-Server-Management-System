@@ -16,5 +16,10 @@ namespace MS_SQL_Management_System
         {
             InitializeComponent();
         }
+
+        private void addNewDashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
