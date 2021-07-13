@@ -21,5 +21,21 @@ namespace MS_SQL_Management_System
         {
 
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if(MessageBox.Show("Are you sure you want to Exit the Server Management System?","Confirm",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            
+        }
+
+        private void addNewDashboardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddDashboard addBoard = new AddDashboard();
+            addBoard.Show();
+        }
     }
 }
