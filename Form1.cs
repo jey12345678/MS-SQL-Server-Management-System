@@ -110,5 +110,10 @@ namespace MS_SQL_Management_System
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

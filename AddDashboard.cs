@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace MS_SQL_Management_System
         {
             InitializeComponent();
         }
+
+        String imageLocation = "";
+        Image initialImage;
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -51,14 +57,38 @@ namespace MS_SQL_Management_System
         {
             String dashBoardName = nameOfDashboardtxt.Text;
             String dashBoardCreatorName = nameOfCreatorTxt.Text;
+            String groupName = grouptxt.Text;
             String publication = datePublished.Text;
+            
 
 
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "data source = LAPTOP-48SAL22A\\SQLEXPRESS; database = ManagementDatabase; integrated security = True";
+
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = connection;
+
+            connection.Open();
+            cmd.CommandText = "insert into NewDashboard (dName,dCreatorName,dGroup,dPubl,img) values ('" + dashBoardName + "','" + dashBoardCreatorName + "','" + groupName + "','" + publication + "','" + imageLocation + "')";
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
+            MessageBox.Show("Data Saved ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Clear the textboxes
+            nameOfDashboardtxt.Clear();
+            nameOfCreatorTxt.Clear();
+            grouptxt.Clear();
+            imageLocation = "";
+            uploadedDashboard.Image = initialImage;
         }
 
         private void uploadButton_Click(object sender, EventArgs e)
         {
-            String imageLocation = "";
+
+            initialImage = 
+            
             try
             {
                 OpenFileDialog dialog = new OpenFileDialog();
